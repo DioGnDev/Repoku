@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_picture"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/ian"
+            app:civ_border_width="5dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/ColoPrimary">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ikhwanul Muslimin"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp"
+            android:textColor="@color/putih"
+            android:textAllCaps="true"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:id="@+id/nim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11040302005"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/name"
+            android:textSize="22sp"
+            android:textColor="@color/putih"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/prodi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fakultas Teknologi informasi"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/nim"
+            android:textColor="@color/putih"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/jurusan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sistem informasi"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/prodi"
+            android:textColor="@color/putih"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
