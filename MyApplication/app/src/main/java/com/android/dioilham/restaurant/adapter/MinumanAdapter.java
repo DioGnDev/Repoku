@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.dioilham.restaurant.R;
+import com.android.dioilham.restaurant.helper.ImageLoader;
+import com.android.dioilham.restaurant.helper.Koneksi;
 import com.android.dioilham.restaurant.model.Minuman;
 
 import java.util.List;
@@ -19,16 +21,19 @@ import java.util.List;
  */
 public class MinumanAdapter extends ArrayAdapter<Minuman> {
 
-
     Context context;
     int resource;
     List<Minuman> daftar;
+    ImageLoader iml;
+    Koneksi kn;
 
     public MinumanAdapter(Context context, int resource, List<Minuman> daftar) {
         super(context, resource, daftar);
         this.context = context;
         this.resource = resource;
         this.daftar = daftar;
+        iml = new ImageLoader(this.context);
+        kn = new Koneksi(this.context);
     }
 
 
@@ -37,6 +42,8 @@ public class MinumanAdapter extends ArrayAdapter<Minuman> {
         View rootView = convertView;
         MinumanHolder holder = null;
         Minuman minuman = getItem(position);
+
+        String urlImg = kn.urlImg()+minuman.getGambar();
 
         if (rootView == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -54,7 +61,8 @@ public class MinumanAdapter extends ArrayAdapter<Minuman> {
             holder = (MinumanHolder) rootView.getTag();
         }
 
-        holder.img.setImageResource(minuman.getImg());
+//        holder.img.setImageResource(minuman.getImg());
+        iml.DisplayImage(urlImg,holder.img);
         holder.nama.setText(minuman.getNama());
         holder.keterangan.setText(minuman.getKeterangan());
         holder.harga.setText(String.valueOf(minuman.getHarga()));

@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.dioilham.restaurant.R;
+import com.android.dioilham.restaurant.helper.ImageLoader;
+import com.android.dioilham.restaurant.helper.Koneksi;
 import com.android.dioilham.restaurant.model.Makanan;
 
 import java.util.List;
@@ -22,12 +24,16 @@ public class MakananAdapter extends ArrayAdapter<Makanan> {
     Context context;
     int resource;
     List<Makanan> daftar;
+    ImageLoader iml;
+    Koneksi kn;
 
     public MakananAdapter(Context context, int resource, List<Makanan> daftar) {
         super(context, resource, daftar);
         this.context = context;
         this.resource = resource;
         this.daftar = daftar;
+        iml = new ImageLoader(this.context);
+        kn = new Koneksi(this.context);
     }
 
     @Override
@@ -35,6 +41,8 @@ public class MakananAdapter extends ArrayAdapter<Makanan> {
         View rootView = convertView;
         MakananHolder holder = null;
         Makanan makanan = getItem(position);
+
+        String urlImg = kn.urlImg()+makanan.getGambar();
 
         if(rootView==null) {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
@@ -53,7 +61,8 @@ public class MakananAdapter extends ArrayAdapter<Makanan> {
             holder = (MakananHolder)rootView.getTag();
         }
 
-        holder.img.setImageResource(makanan.getImg());
+//        holder.img.setImageResource(makanan.getImg());
+        iml.DisplayImage(urlImg,holder.img);
         holder.nama.setText(makanan.getNama());
         holder.keterangan.setText(makanan.getKeterangan());
         holder.harga.setText(String.valueOf(makanan.getHarga()));
